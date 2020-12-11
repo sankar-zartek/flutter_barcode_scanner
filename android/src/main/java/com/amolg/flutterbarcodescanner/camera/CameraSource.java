@@ -227,7 +227,7 @@ public class CameraSource {
          * is a jpeg binary.
          */
         void onPictureTaken(byte[] data);
-    }r
+    }
     /**
      * Callback interface used to notify on completion of camera auto focus.
      */
