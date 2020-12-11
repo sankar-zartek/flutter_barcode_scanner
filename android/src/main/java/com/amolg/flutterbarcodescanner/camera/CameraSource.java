@@ -227,16 +227,7 @@ public class CameraSource {
          * is a jpeg binary.
          */
         void onPictureTaken(byte[] data);
-    }
-
-     @SuppressLint("Assert")
-        void release() {
-            assert (mProcessingThread == null || mProcessingThread.getState() == State.TERMINATED);
-            if (mDetector != null) {
-                mDetector.release();
-                mDetector = null;
-            }
-        }
+    }r
     /**
      * Callback interface used to notify on completion of camera auto focus.
      */
@@ -970,11 +961,20 @@ public class CameraSource {
             mDetector = detector;
         }
 
+//         @SuppressLint("Assert")
+//         void release() {
+//             assert (mProcessingThread.getState() == State.TERMINATED);
+//             mDetector.release();
+//             mDetector = null;
+//         }
+        
         @SuppressLint("Assert")
         void release() {
-            assert (mProcessingThread.getState() == State.TERMINATED);
-            mDetector.release();
-            mDetector = null;
+            assert (mProcessingThread == null || mProcessingThread.getState() == State.TERMINATED);
+            if (mDetector != null) {
+                mDetector.release();
+                mDetector = null;
+            }
         }
 
         void setActive(boolean active) {
